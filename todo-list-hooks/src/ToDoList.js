@@ -11,9 +11,11 @@ function ToDoList(props) {
                 {props.todos.map(todo => (
                     <>
                         <ToDo 
+                            id={todo.id}
                             task={todo.task} 
                             key={todo.id}
-                            completed={todo.completed} />
+                            completed={todo.completed}
+                            removeToDo={props.removeToDo} />
                         <Divider />
                     </>
                 ))}
