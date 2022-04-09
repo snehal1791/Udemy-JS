@@ -15,7 +15,8 @@ function ToDoList(props) {
                             task={todo.task} 
                             key={todo.id}
                             completed={todo.completed}
-                            removeToDo={props.removeToDo} />
+                            removeToDo={props.removeToDo}
+                            toggleCompletion={props.toggleCompletion} />
                         <Divider />
                     </>
                 ))}

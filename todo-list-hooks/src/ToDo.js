@@ -7,10 +7,10 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 
-function ToDo({ id, task, completed, removeToDo }) {
+function ToDo({ id, task, completed, removeToDo, toggleCompletion }) {
     return (
         <ListItem>
-            <Checkbox tabIndex={-1} checked={completed} />
+            <Checkbox tabIndex={-1} checked={completed} onClick={() => toggleCompletion(id)} />
             <ListItemText 
                 style={{ 
                         textDecoration: completed ? 'line-through' : 'none' 
