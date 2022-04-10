@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Udemy-todo-list-hooks/static/css/main.073c9b0a.css",
+    "main.js": "/Udemy-todo-list-hooks/static/js/main.81514dcf.js",
+    "static/js/787.dcb28519.chunk.js": "/Udemy-todo-list-hooks/static/js/787.dcb28519.chunk.js",
+    "index.html": "/Udemy-todo-list-hooks/index.html",
+    "main.073c9b0a.css.map": "/Udemy-todo-list-hooks/static/css/main.073c9b0a.css.map",
+    "main.81514dcf.js.map": "/Udemy-todo-list-hooks/static/js/main.81514dcf.js.map",
+    "787.dcb28519.chunk.js.map": "/Udemy-todo-list-hooks/static/js/787.dcb28519.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.81514dcf.js"
+  ]
+}
