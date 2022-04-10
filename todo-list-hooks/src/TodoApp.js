@@ -7,7 +7,6 @@ import Grid from "@material-ui/core/Grid";
 import useToDoState from "./hooks/useToDoState";
 import ToDoList from "./ToDoList";
 import ToDoForm from "./ToDoForm";
-import useLocalStorageState from "./hooks/useLocalStorageState";
 
 function TodoApp() {
 
