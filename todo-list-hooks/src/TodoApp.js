@@ -4,21 +4,16 @@ import Paper from "@material-ui/core/Paper";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Grid from "@material-ui/core/Grid";
-import { useEffect } from "react";
 import useToDoState from "./hooks/useToDoState";
 import ToDoList from "./ToDoList";
 import ToDoForm from "./ToDoForm";
-import { v4 as uuidv4 } from 'uuid';
+import useLocalStorageState from "./hooks/useLocalStorageState";
 
 function TodoApp() {
 
-    const initialTodos = JSON.parse(window.localStorage.getItem("todos") || "[]");
+    const initialTodos = [];
 
     const {todos, addToDo, editToDo, toggleCompletion, removeToDo} = useToDoState(initialTodos);
-
-    useEffect(() => {
-        window.localStorage.setItem("todos", JSON.stringify(todos))
-    }, [todos])
 
     return (
         <Paper style={{
