@@ -8,7 +8,7 @@ function ToDoList(props) {
     return (
         <Paper>
             <List>
-                {props.todos.map(todo => (
+                {props.todos.map((todo, idx) => (
                     <>
                         <ToDo 
                             id={todo.id}
@@ -18,7 +18,7 @@ function ToDoList(props) {
                             removeToDo={props.removeToDo}
                             toggleCompletion={props.toggleCompletion}
                             editToDo={props.editToDo} />
-                        <Divider />
+                        {idx < props.todos.length - 1 && <Divider />}
                     </>
                 ))}
             </List>

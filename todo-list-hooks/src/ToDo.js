@@ -12,7 +12,7 @@ import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 function ToDo({ id, task, completed, removeToDo, toggleCompletion, editToDo }) {
     const [isEditing, toggleIsEditing] = useToggle();
     return (
-        <ListItem>
+        <ListItem style={{ height: "64px"}}>
             {isEditing ? 
             <EditToDoForm id={id} task={task} editToDo={editToDo} toggleIsEditing={toggleIsEditing} />
             :
