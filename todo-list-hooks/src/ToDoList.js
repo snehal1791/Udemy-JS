@@ -10,17 +10,14 @@ function ToDoList(props) {
             <Paper>
                 <List>
                     {props.todos.map((todo, idx) => (
-                        <>
+                        <React.Fragment key={todo.id.toString()}>
                             <ToDo 
-                                key={todo.id}
-                                id={todo.id}
-                                task={todo.task} 
-                                completed={todo.completed}
+                                {...todo}
                                 removeToDo={props.removeToDo}
                                 toggleCompletion={props.toggleCompletion}
                                 editToDo={props.editToDo} />
                             {idx < props.todos.length - 1 && <Divider key={todo.id.toString()+'2'} />}
-                        </>
+                        </React.Fragment>
                     ))}
                 </List>
             </Paper>

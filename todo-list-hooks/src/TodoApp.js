@@ -4,7 +4,8 @@ import Paper from "@material-ui/core/Paper";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Grid from "@material-ui/core/Grid";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import useToDoState from "./hooks/useToDoState";
 import ToDoList from "./ToDoList";
 import ToDoForm from "./ToDoForm";
 import { v4 as uuidv4 } from 'uuid';
@@ -13,36 +14,11 @@ function TodoApp() {
 
     const initialTodos = JSON.parse(window.localStorage.getItem("todos") || "[]");
 
-    const [todos, setTodos] = useState(initialTodos);
+    const {todos, addToDo, editToDo, toggleCompletion, removeToDo} = useToDoState(initialTodos);
 
     useEffect(() => {
         window.localStorage.setItem("todos", JSON.stringify(todos))
     }, [todos])
-
-    const addToDo = (newTask) => {
-        setTodos([...todos, {id: uuidv4(), task: newTask, completed: false}]);
-    }
-
-    const removeToDo = (todoId) => {
-        const updatedTodos = todos.filter(todo => todo.id !== todoId);
-        setTodos(updatedTodos);
-    }
-
-    const toggleCompletion = (todoId, newTask) => {
-        const updatedTodos = todos.map(todo => 
-            todo.id === todoId ? {...todo, completed: !todo.completed} : todo
-        );
-        setTodos(updatedTodos);
-    }
-
-    const editToDo = (todoId, newTask) => {
-        const updatedTodos = todos.map(todo => 
-            todo.id === todoId ?
-                {...todo, task: newTask} :
-                todo
-        );
-        setTodos(updatedTodos);
-    }
 
     return (
         <Paper style={{
@@ -73,11 +49,3 @@ function TodoApp() {
 }
 
 export default TodoApp;
-
-/**ToDoApp
- *  -ToDoForm
- *  - TODOList
- *      - ToDoListItem
- */
-
-/**each todo has id, task, status(completed: true/false) */
