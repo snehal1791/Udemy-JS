@@ -5,25 +5,28 @@ import Divider from "@material-ui/core/Divider";
 import ToDo from "./ToDo";
 
 function ToDoList(props) {
-    return (
-        <Paper>
-            <List>
-                {props.todos.map((todo, idx) => (
-                    <>
-                        <ToDo 
-                            key={todo.id}
-                            id={todo.id}
-                            task={todo.task} 
-                            completed={todo.completed}
-                            removeToDo={props.removeToDo}
-                            toggleCompletion={props.toggleCompletion}
-                            editToDo={props.editToDo} />
-                        {idx < props.todos.length - 1 && <Divider key={todo.id.toString()+'2'} />}
-                    </>
-                ))}
-            </List>
-        </Paper>
-    )
+    if(props.todos.length) {
+        return (
+            <Paper>
+                <List>
+                    {props.todos.map((todo, idx) => (
+                        <>
+                            <ToDo 
+                                key={todo.id}
+                                id={todo.id}
+                                task={todo.task} 
+                                completed={todo.completed}
+                                removeToDo={props.removeToDo}
+                                toggleCompletion={props.toggleCompletion}
+                                editToDo={props.editToDo} />
+                            {idx < props.todos.length - 1 && <Divider key={todo.id.toString()+'2'} />}
+                        </>
+                    ))}
+                </List>
+            </Paper>
+        );
+    }
+    return null;
 }
 
 export default ToDoList;
