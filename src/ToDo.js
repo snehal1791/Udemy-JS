@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext, memo} from "react";
 import useToggle from "./hooks/useToggle";
 import EditToDoForm from "./EditToDoForm";
 import ListItem from "@material-ui/core/ListItem";
@@ -8,16 +8,18 @@ import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
+import { DispatchContext } from "./contexts/todos.context";
 
-function ToDo({ id, task, completed, removeToDo, toggleCompletion, editToDo }) {
+function ToDo({ id, task, completed }) {
+    const dispatch = useContext(DispatchContext);
     const [isEditing, toggleIsEditing] = useToggle();
     return (
         <ListItem style={{ height: "64px"}}>
             {isEditing ? 
-            <EditToDoForm id={id} task={task} editToDo={editToDo} toggleIsEditing={toggleIsEditing} />
+            <EditToDoForm id={id} task={task} toggleIsEditing={toggleIsEditing} />
             :
             <>
-                <Checkbox tabIndex={-1} checked={completed} onClick={() => toggleCompletion(id)} />
+                <Checkbox tabIndex={-1} checked={completed} onClick={() => dispatch({ type: "TOGGLE", id: id })} />
                 <ListItemText 
                     style={{ 
                         textDecoration: completed ? 'line-through' : 'none' 
@@ -26,7 +28,7 @@ function ToDo({ id, task, completed, removeToDo, toggleCompletion, editToDo }) {
                 <ListItemSecondaryAction>
                     <IconButton 
                         aria-label='delete'
-                        onClick={() => removeToDo(id)} >
+                        onClick={() => dispatch({ type: "REMOVE", id: id })} >
                         <DeleteIcon />
                     </IconButton>
                     <IconButton aria-label='edit' onClick={toggleIsEditing} >
@@ -38,4 +40,4 @@ function ToDo({ id, task, completed, removeToDo, toggleCompletion, editToDo }) {
     )
 }
 
-export default ToDo;
+export default memo(ToDo);
